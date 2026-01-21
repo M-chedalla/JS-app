@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JustSplit | Expenses Simplified</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    <style>
+        body { background-color: #0f172a; color: white; overflow-x: hidden; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .gradient-text { background: linear-gradient(90deg, #ff9933, #ffffff, #128807); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body>
+    <nav class="fixed w-full z-50 flex justify-between items-center px-8 py-6 glass">
+        <div class="text-2xl font-bold tracking-tighter">JUST<span class="text-blue-400">SPLIT</span></div>
+        <div class="hidden md:flex gap-8 text-sm uppercase tracking-widest opacity-70">
+            <a href="#" class="hover:opacity-100 transition">Features</a>
+            <a href="#" class="hover:opacity-100 transition">Security</a>
+            <a href="#" class="hover:opacity-100 transition">Contact</a>
+        </div>
+        <button class="bg-blue-600 hover:bg-blue-500 px-5 py-2 rounded-full text-sm font-medium transition">Get App</button>
+    </nav>
+
+    <section class="h-screen flex flex-col justify-center items-center text-center px-4">
+        <div class="mb-6 inline-block glass px-4 py-1 rounded-full text-xs uppercase tracking-widest text-blue-300">
+            Now available for iOS
+        </div>
+        <h1 class="text-6xl md:text-8xl font-extrabold mb-6 tracking-tight">
+            Split Bills, <br><span class="gradient-text">Keep Friendships.</span>
+        </h1>
+        <p class="max-w-xl text-lg opacity-60 mb-10">
+            The simplest way to manage group expenses. Fast, secure, and designed for your modern lifestyle.
+        </p>
+        
+        <div class="relative w-64 h-[500px] glass rounded-[3rem] p-4 shadow-2xl border-4 border-gray-800">
+            <div class="w-full h-full bg-slate-900 rounded-[2.5rem] flex items-center justify-center overflow-hidden">
+                <div class="text-5xl font-bold gradient-text">J$</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-8 max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+        <div class="p-8 glass rounded-3xl hover:border-blue-500/50 transition duration-500">
+            <div class="w-12 h-12 bg-orange-500/20 rounded-xl mb-6 flex items-center justify-center text-orange-400">⚡</div>
+            <h3 class="text-xl font-bold mb-4">Instant Sync</h3>
+            <p class="opacity-50">Expenses update across all devices in real-time. No more waiting.</p>
+        </div>
+        <div class="p-8 glass rounded-3xl hover:border-white/50 transition duration-500">
+            <div class="w-12 h-12 bg-white/10 rounded-xl mb-6 flex items-center justify-center text-white text-xl">₹</div>
+            <h3 class="text-xl font-bold mb-4">Indian Context</h3>
+            <p class="opacity-50">Optimized for local UPI splits and currency formats flawlessly.</p>
+        </div>
+        <div class="p-8 glass rounded-3xl hover:border-green-500/50 transition duration-500">
+            <div class="w-12 h-12 bg-green-500/20 rounded-xl mb-6 flex items-center justify-center text-green-400">🛡️</div>
+            <h3 class="text-xl font-bold mb-4">End-to-End Secure</h3>
+            <p class="opacity-50">Your financial data is encrypted and private. Always.</p>
+        </div>
+    </section>
+
+    <footer class="py-12 text-center opacity-30 text-sm">
+        © 2026 JustSplit. Made with ❤️ in India.
+    </footer>
+</body>
+</html>
