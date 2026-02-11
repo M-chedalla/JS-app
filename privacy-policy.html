@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Just Split Bills</title>
+    <meta name="theme-color" content="#233dff">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Ahsing';
+            src: url('fonts/ahsing.otf') format('opentype');
+            font-display: block;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blue: #233dff;
+            --lime: #c1ff72;
+            --text-primary: #1a1a1f;
+            --text-secondary: #6b6b76;
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --border: #e8e8ed;
+            --radius: 16px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --text-primary: #f0f0f5;
+                --text-secondary: #9a9aab;
+                --bg: #0d0d0f;
+                --card-bg: #1a1a1f;
+                --border: #2a2a32;
+            }
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Shared header ── */
+        .site-header {
+            background: var(--blue);
+            padding: 48px 24px 40px;
+            text-align: center;
+        }
+
+        .site-header .logo {
+            font-family: 'Ahsing', 'Georgia', serif;
+            font-size: 48px;
+            color: var(--lime);
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+            text-decoration: none;
+            display: inline-block;
+            text-shadow: 0 0 40px rgba(193, 255, 114, 0.2);
+            transition: transform 0.25s ease;
+        }
+
+        .site-header .logo:hover { transform: scale(1.04); }
+
+        .site-header h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .site-header .effective {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ── Shared nav ── */
+        .site-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 18px 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .site-nav a {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 4px 8px;
+            transition: color 0.2s ease;
+        }
+
+        .site-nav a:hover { color: var(--blue); }
+        .site-nav a.active { color: var(--blue); font-weight: 600; }
+
+        .site-nav .dot {
+            color: var(--border);
+            font-size: 11px;
+            pointer-events: none;
+        }
+
+        /* ── Content ── */
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 40px 0 16px;
+            color: var(--text-primary);
+            letter-spacing: -0.3px;
+        }
+
+        h2:first-of-type { margin-top: 0; }
+
+        h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin: 28px 0 10px;
+            color: var(--text-primary);
+        }
+
+        p { margin-bottom: 16px; color: var(--text-secondary); font-size: 15px; }
+
+        ul, ol { margin: 0 0 16px 24px; color: var(--text-secondary); font-size: 15px; }
+        li { margin-bottom: 8px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0 24px;
+            font-size: 14px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        th {
+            font-weight: 600;
+            color: var(--text-primary);
+            background: var(--card-bg);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        a { color: var(--blue); }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .card p:last-child { margin-bottom: 0; }
+
+        strong { color: var(--text-primary); font-weight: 600; }
+
+        /* ── Shared footer ── */
+        .site-footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 24px 36px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-nav {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-nav a {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 4px 8px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-nav a:hover { color: var(--blue); }
+
+        .footer-nav .dot {
+            color: var(--border);
+            font-size: 11px;
+            pointer-events: none;
+        }
+
+        .footer-copy {
+            font-size: 12px;
+            color: var(--text-secondary);
+            opacity: 0.5;
+        }
+
+        @media (max-width: 600px) {
+            .site-header { padding: 40px 20px 32px; }
+            .site-header .logo { font-size: 40px; }
+            .site-header h1 { font-size: 22px; }
+            .container { padding: 32px 20px 60px; }
+            h2 { font-size: 20px; }
+            table { font-size: 13px; }
+            th, td { padding: 10px 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="https://justsplitapp.com" class="logo">J$</a>
+        <h1>Privacy Policy</h1>
+        <p class="effective">Effective Date: February 11, 2025</p>
+    </header>
+
+    <nav class="site-nav">
+        <a href="https://justsplitapp.com/privacy-policy" class="active">Privacy</a>
+        <span class="dot">&middot;</span>
+        <a href="https://justsplitapp.com/terms-of-use">Terms</a>
+        <span class="dot">&middot;</span>
+        <a href="mailto:support@justsplitapp.com">Contact</a>
+    </nav>
+
+    <div class="container">
+
+        <h2>Introduction</h2>
+        <p>Just Split Bills ("Just Split," "we," "our," or "us") is a mobile application designed to help you split expenses with friends and groups. This Privacy Policy explains how we collect, use, store, and protect your personal information when you use the Just Split Bills application (the "App"), available on the Apple App Store.</p>
+        <p>By downloading, installing, or using the App, you agree to the practices described in this Privacy Policy. If you do not agree, please do not use the App.</p>
+
+        <h2>Information We Collect</h2>
+
+        <h3>1. Information You Provide Directly</h3>
+
+        <table>
+            <thead>
+                <tr><th>Data Type</th><th>Purpose</th><th>Required</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Name</strong></td>
+                    <td>Display name within groups and expenses; retrieved from Apple Sign-In or entered manually</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td><strong>Email address</strong></td>
+                    <td>Account identification; retrieved from Apple Sign-In (you may choose to hide your email via Apple's private relay service)</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td><strong>Phone number</strong></td>
+                    <td>One-time verification via SMS OTP to authenticate your account and to enable contact-based group member matching</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td><strong>Expense data</strong></td>
+                    <td>Titles, amounts, dates, currency codes, and settlement notes you create within groups</td>
+                    <td>User-generated</td>
+                </tr>
+                <tr>
+                    <td><strong>Receipt images</strong></td>
+                    <td>Photos of receipts you optionally attach to expenses</td>
+                    <td>No</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>2. Information Collected with Your Permission</h3>
+
+        <table>
+            <thead>
+                <tr><th>Data Type</th><th>Purpose</th><th>Permission</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Contacts</strong></td>
+                    <td>To help you add friends to expense groups by matching phone numbers. Contact data is processed on-device and is <em>not</em> uploaded to our servers or stored beyond the active session.</td>
+                    <td>Contacts (iOS)</td>
+                </tr>
+                <tr>
+                    <td><strong>Camera</strong></td>
+                    <td>To photograph receipts for expense attachment</td>
+                    <td>Camera (iOS)</td>
+                </tr>
+                <tr>
+                    <td><strong>Photo Library</strong></td>
+                    <td>To select existing receipt photos for expense attachment</td>
+                    <td>Photos (iOS)</td>
+                </tr>
+                <tr>
+                    <td><strong>Push notifications</strong></td>
+                    <td>To notify you of group activity and settlement reminders</td>
+                    <td>Notifications (iOS)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>3. Information Collected Automatically</h3>
+
+        <table>
+            <thead>
+                <tr><th>Data Type</th><th>Purpose</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Apple Sign-In subject identifier</strong></td>
+                    <td>A unique, app-scoped token used to authenticate your Apple account. This is not your Apple ID and cannot be used to identify you across other apps.</td>
+                </tr>
+                <tr>
+                    <td><strong>Device push token (FCM)</strong></td>
+                    <td>A Firebase Cloud Messaging token used to deliver push notifications to your device. This token does not personally identify you.</td>
+                </tr>
+                <tr>
+                    <td><strong>Country code and locale</strong></td>
+                    <td>Derived from your device settings to display the correct dial code and default currency. Not transmitted to any third party.</td>
+                </tr>
+                <tr>
+                    <td><strong>App preferences</strong></td>
+                    <td>Your selected theme (light, dark, or system) and preferred currency, stored locally and synced to your account.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="card">
+            <p><strong>What we do NOT collect:</strong> We do not collect location data, browsing history, advertising identifiers (IDFA), health data, financial account information (bank accounts or credit cards), biometric data, or any tracking data. We do not build advertising profiles.</p>
+        </div>
+
+        <h2>How We Use Your Information</h2>
+        <p>We use the information we collect solely to provide, maintain, and improve the App:</p>
+        <ul>
+            <li><strong>Account creation and authentication</strong> — verifying your identity via Apple Sign-In and phone number verification</li>
+            <li><strong>Core app functionality</strong> — creating groups, recording expenses, calculating balances, and tracking settlements</li>
+            <li><strong>Group member matching</strong> — using normalised phone numbers to connect you with friends within expense groups</li>
+            <li><strong>Push notifications</strong> — sending you activity updates and reminders related to your groups</li>
+            <li><strong>Data synchronisation</strong> — keeping your data consistent across your devices</li>
+            <li><strong>Preference persistence</strong> — remembering your theme and currency preferences</li>
+        </ul>
+        <p>We do <strong>not</strong> use your information for advertising, behavioural profiling, data brokering, or sale to third parties under any circumstances.</p>
+
+        <h2>Third-Party Services</h2>
+        <p>The App relies on the following third-party services:</p>
+
+        <table>
+            <thead>
+                <tr><th>Service</th><th>Provider</th><th>Purpose</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Firebase Authentication</strong></td>
+                    <td>Google LLC</td>
+                    <td>Phone number verification via SMS OTP and Apple Sign-In credential validation</td>
+                </tr>
+                <tr>
+                    <td><strong>Cloud Firestore</strong></td>
+                    <td>Google LLC</td>
+                    <td>Cloud storage and synchronisation of account data, groups, expenses, and settlements</td>
+                </tr>
+                <tr>
+                    <td><strong>Firebase Cloud Messaging</strong></td>
+                    <td>Google LLC</td>
+                    <td>Push notification delivery</td>
+                </tr>
+                <tr>
+                    <td><strong>Apple Sign-In</strong></td>
+                    <td>Apple Inc.</td>
+                    <td>Secure, privacy-preserving account authentication</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>These services operate under their own privacy policies: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Google/Firebase Privacy Policy</a> and <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a>.</p>
+        <p>We do not integrate any third-party analytics, advertising, or tracking SDKs.</p>
+
+        <h2>Data Storage and Security</h2>
+        <p>Your data is stored in two locations:</p>
+        <ul>
+            <li><strong>On-device (local)</strong> — Expenses, groups, settlements, and receipt images are stored locally using Apple's SwiftData framework within the App's sandboxed container. Authentication credentials are stored in the iOS Keychain, which is hardware-encrypted by the operating system.</li>
+            <li><strong>Cloud (remote)</strong> — Account information, groups, expenses, and settlements are synced to Google Cloud Firestore, where data is encrypted in transit (TLS 1.2+) and at rest (AES-256).</li>
+        </ul>
+        <p>We implement reasonable technical and organisational safeguards to protect your data. However, no method of electronic transmission or storage is completely secure, and we cannot guarantee absolute security.</p>
+
+        <h2>Data Retention</h2>
+        <ul>
+            <li><strong>Account data</strong> (name, email, phone number) — retained until you delete your account.</li>
+            <li><strong>Expense and group data</strong> — retained until you delete individual items or your account.</li>
+            <li><strong>Soft-deleted expenses</strong> — moved to "Recently Deleted" and permanently purged after 30 days.</li>
+            <li><strong>Push notification tokens</strong> — removed from our servers when you sign out or delete your account.</li>
+            <li><strong>Keychain data</strong> — cleared automatically by the App upon reinstallation.</li>
+        </ul>
+
+        <h2>Your Rights and Choices</h2>
+        <p>You have the following rights over your personal data:</p>
+        <ul>
+            <li><strong>Access</strong> — View all your personal data within the App at any time via the Settings and group screens.</li>
+            <li><strong>Correction</strong> — Update your name and preferences in the App's Settings.</li>
+            <li><strong>Deletion</strong> — Delete your account from within the App (Settings → Delete Account). This permanently removes your account, expense history, and group memberships from our servers. Shared expense splits involving other members may be retained in anonymised form to maintain the integrity of other members' records.</li>
+            <li><strong>Data export</strong> — Request a complete export of your data by emailing <a href="mailto:privacy@justsplitapp.com">privacy@justsplitapp.com</a>.</li>
+            <li><strong>Withdraw permissions</strong> — Revoke camera, contacts, or notification permissions at any time via iOS Settings → Just Split Bills. The App will continue to function with reduced features.</li>
+        </ul>
+        <p>To exercise any of these rights, contact us at <a href="mailto:privacy@justsplitapp.com">privacy@justsplitapp.com</a>. We will respond within 30 days.</p>
+
+        <h2>Children's Privacy</h2>
+        <p>The App is not directed at children under the age of 13 (or the minimum age in your jurisdiction). We do not knowingly collect personal information from children. If you believe a child has provided us with personal data, please contact us at <a href="mailto:privacy@justsplitapp.com">privacy@justsplitapp.com</a>, and we will promptly delete such information.</p>
+
+        <h2>International Data Transfers</h2>
+        <p>Your data may be processed and stored on servers operated by Google LLC in the United States or other regions. By using the App, you consent to the transfer of your information to countries outside your country of residence, which may have different data protection laws. We ensure appropriate safeguards are in place through our service providers' compliance with applicable data protection frameworks.</p>
+
+        <h2>Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. When we make material changes, we will update the "Effective Date" at the top of this page and, where practicable, notify you via an in-app notification. Your continued use of the App after such changes constitutes acceptance of the updated policy.</p>
+
+        <h2>Contact Us</h2>
+        <div class="card">
+            <p>If you have questions, concerns, or requests regarding this Privacy Policy or your personal data:</p>
+            <p><strong>Privacy inquiries:</strong> <a href="mailto:privacy@justsplitapp.com">privacy@justsplitapp.com</a></p>
+            <p><strong>General support:</strong> <a href="mailto:support@justsplitapp.com">support@justsplitapp.com</a></p>
+        </div>
+
+    </div>
+
+    <footer class="site-footer">
+        <nav class="footer-nav">
+            <a href="https://justsplitapp.com/privacy-policy">Privacy</a>
+            <span class="dot">&middot;</span>
+            <a href="https://justsplitapp.com/terms-of-use">Terms</a>
+            <span class="dot">&middot;</span>
+            <a href="mailto:support@justsplitapp.com">Contact</a>
+        </nav>
+        <span class="footer-copy">&copy; 2025 Just Split Bills. All rights reserved.</span>
+    </footer>
+
+</body>
+</html>
