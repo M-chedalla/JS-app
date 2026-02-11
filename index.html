@@ -3,64 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JustSplit | Expenses Simplified</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    <title>Just Split</title>
+    <meta name="description" content="Split expenses effortlessly with friends and groups.">
+    <meta name="theme-color" content="#233dff">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #0f172a; color: white; overflow-x: hidden; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .gradient-text { background: linear-gradient(90deg, #ff9933, #ffffff, #128807); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        @font-face {
+            font-family: 'Ahsing';
+            src: url('fonts/ahsing.otf') format('opentype');
+            font-display: block;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blue: #233dff;
+            --lime: #c1ff72;
+            --lime-glow: rgba(193, 255, 114, 0.15);
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background: var(--blue);
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Grain texture */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 128px 128px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Radial glow */
+        .glow {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60vmin;
+            height: 60vmin;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--lime-glow) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+        }
+
+        /* Hero — J$ + download button */
+        .hero {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            cursor: default;
+        }
+
+        .hero-text {
+            font-family: 'Ahsing', 'Georgia', serif;
+            color: var(--lime);
+            line-height: 0.85;
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.92);
+            animation: revealHero 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+            text-shadow:
+                0 0 80px rgba(193, 255, 114, 0.25),
+                0 4px 0 rgba(0, 0, 0, 0.08);
+        }
+
+        @keyframes revealHero {
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .download-btn {
+            margin-top: clamp(20px, 3vh, 40px);
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.7s forwards;
+        }
+
+        .download-btn a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .download-btn a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        .download-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Shared footer ── */
+        .site-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 24px 20px;
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.9s forwards;
+        }
+
+        .footer-nav {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-nav a {
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.35);
+            text-decoration: none;
+            transition: color 0.25s ease;
+            padding: 4px 8px;
+        }
+
+        .footer-nav a:hover { color: rgba(255, 255, 255, 0.8); }
+
+        .footer-nav .dot {
+            color: rgba(255, 255, 255, 0.15);
+            font-size: 11px;
+            pointer-events: none;
+        }
+
+        .footer-copy {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.2);
+        }
     </style>
 </head>
 <body>
-    <nav class="fixed w-full z-50 flex justify-between items-center px-8 py-6 glass">
-        <div class="text-2xl font-bold tracking-tighter">JUST<span class="text-blue-400">SPLIT</span></div>
-        <div class="hidden md:flex gap-8 text-sm uppercase tracking-widest opacity-70">
-            <a href="#" class="hover:opacity-100 transition">Features</a>
-            <a href="#" class="hover:opacity-100 transition">Security</a>
-            <a href="#" class="hover:opacity-100 transition">Contact</a>
-        </div>
-        <button class="bg-blue-600 hover:bg-blue-500 px-5 py-2 rounded-full text-sm font-medium transition">Get App</button>
-    </nav>
 
-    <section class="h-screen flex flex-col justify-center items-center text-center px-4">
-        <div class="mb-6 inline-block glass px-4 py-1 rounded-full text-xs uppercase tracking-widest text-blue-300">
-            Now available for iOS
-        </div>
-        <h1 class="text-6xl md:text-8xl font-extrabold mb-6 tracking-tight">
-            Split Bills, <br><span class="gradient-text">Keep Friendships.</span>
-        </h1>
-        <p class="max-w-xl text-lg opacity-60 mb-10">
-            The simplest way to manage group expenses. Fast, secure, and designed for your modern lifestyle.
-        </p>
-        
-        <div class="relative w-64 h-[500px] glass rounded-[3rem] p-4 shadow-2xl border-4 border-gray-800">
-            <div class="w-full h-full bg-slate-900 rounded-[2.5rem] flex items-center justify-center overflow-hidden">
-                <div class="text-5xl font-bold gradient-text">J$</div>
-            </div>
-        </div>
-    </section>
+    <div class="glow"></div>
 
-    <section class="py-24 px-8 max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-        <div class="p-8 glass rounded-3xl hover:border-blue-500/50 transition duration-500">
-            <div class="w-12 h-12 bg-orange-500/20 rounded-xl mb-6 flex items-center justify-center text-orange-400">⚡</div>
-            <h3 class="text-xl font-bold mb-4">Instant Sync</h3>
-            <p class="opacity-50">Expenses update across all devices in real-time. No more waiting.</p>
+    <div class="hero">
+        <div class="hero-text" id="heroText">J$</div>
+        <div class="download-btn">
+            <a href="#" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11Z"/></svg>
+                Download on the App Store
+            </a>
         </div>
-        <div class="p-8 glass rounded-3xl hover:border-white/50 transition duration-500">
-            <div class="w-12 h-12 bg-white/10 rounded-xl mb-6 flex items-center justify-center text-white text-xl">₹</div>
-            <h3 class="text-xl font-bold mb-4">Indian Context</h3>
-            <p class="opacity-50">Optimized for local UPI splits and currency formats flawlessly.</p>
-        </div>
-        <div class="p-8 glass rounded-3xl hover:border-green-500/50 transition duration-500">
-            <div class="w-12 h-12 bg-green-500/20 rounded-xl mb-6 flex items-center justify-center text-green-400">🛡️</div>
-            <h3 class="text-xl font-bold mb-4">End-to-End Secure</h3>
-            <p class="opacity-50">Your financial data is encrypted and private. Always.</p>
-        </div>
-    </section>
+    </div>
 
-    <footer class="py-12 text-center opacity-30 text-sm">
-        © 2026 JustSplit. Made with ❤️ in India.
+    <footer class="site-footer">
+        <nav class="footer-nav">
+            <a href="https://justsplitapp.com/privacy-policy">Privacy</a>
+            <span class="dot">&middot;</span>
+            <a href="https://justsplitapp.com/terms-of-use">Terms</a>
+            <span class="dot">&middot;</span>
+            <a href="mailto:support@justsplitapp.com">Contact</a>
+        </nav>
+        <span class="footer-copy">&copy; 2026 Just Split. All rights reserved.</span>
     </footer>
+
+    <script>
+        function fitHero() {
+            const el = document.getElementById('heroText');
+            const vw = window.innerWidth;
+            const vh = window.innerHeight;
+            const maxW = vw * 0.90;
+            const maxH = vh * 0.60;
+            let lo = 10, hi = 2000, best = 10;
+            el.style.visibility = 'hidden';
+            el.style.position = 'absolute';
+            while (lo <= hi) {
+                const mid = Math.floor((lo + hi) / 2);
+                el.style.fontSize = mid + 'px';
+                if (el.scrollWidth <= maxW && el.scrollHeight <= maxH) { best = mid; lo = mid + 1; }
+                else { hi = mid - 1; }
+            }
+            el.style.fontSize = best + 'px';
+            el.style.visibility = '';
+            el.style.position = '';
+        }
+        fitHero();
+        window.addEventListener('resize', fitHero);
+    </script>
 </body>
 </html>
